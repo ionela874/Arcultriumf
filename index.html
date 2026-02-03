@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>L'Arc de Triomphe - Chisinau</title>
+    <style>
+        body, html { margin: 0; padding: 0; height: 100%; font-family: 'Times New Roman', serif; background: #0a0a0a; color: white; overflow: hidden; }
+        .slide { display: none; height: 100vh; width: 100vw; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 40px; box-sizing: border-box; }
+        .active { display: flex; animation: fadeIn 1s; }
+        
+        h1 { font-size: 3.5rem; color: #d4af37; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 3px; }
+        .traducere { font-size: 1.1rem; color: #aaa; font-style: italic; margin-bottom: 30px; }
+        
+        .content-box { background: rgba(255, 255, 255, 0.05); padding: 30px; border-radius: 15px; border-left: 5px solid #d4af37; max-width: 900px; text-align: left; }
+        
+        ul { list-style: none; padding: 0; }
+        li { font-size: 1.4rem; margin-bottom: 15px; }
+        .sub-text { font-size: 0.95rem; color: #888; display: block; margin-top: 2px; }
+
+        .arc-photo { width: 100%; max-width: 600px; border: 3px solid #d4af37; border-radius: 10px; box-shadow: 0 0 20px rgba(212, 175, 55, 0.5); }
+        
+        .controls { position: fixed; bottom: 30px; display: flex; gap: 15px; z-index: 100; }
+        button { background: rgba(0,0,0,0.7); border: 1px solid #d4af37; padding: 10px 25px; color: #d4af37; cursor: pointer; transition: 0.3s; text-transform: uppercase; }
+        button:hover { background: #d4af37; color: black; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body>
+
+    <div class="slide active">
+        <h1>L'Arc de Triomphe</h1>
+        <div class="traducere">Arcul de Triumf</div>
+        <p style="font-size: 1.8rem;">Le cœur historique de Chișinău, République de Moldova.</p>
+        <span class="sub-text">Inima istorică a Chișinăului, Republica Moldova.</span>
+    </div>
+
+    <div class="slide">
+        <h1>Histoire et Victoire</h1>
+        <div class="traducere">Istorie și Victorie</div>
+        <div class="content-box">
+            <ul>
+                <li><b>Érigé en 1840</b> par l'architecte Luca Zaushkevich. <span class="sub-text">Ridicată în 1840 de arhitectul Luca Zaușchevici.</span></li>
+                <li>Commémoration de la victoire sur l'Empire Ottoman. <span class="sub-text">Comemorarea victoriei asupra Imperiului Otoman.</span></li>
+                <li>La cloche de 6,4 tonnes a été fondue à partir de canons capturés. <span class="sub-text">Clopotul de 6,4 tone a fost turnat din tunuri capturate.</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="slide">
+        <h1>Architecture Néoclassique</h1>
+        <div class="traducere">Arhitectură Neoclasică</div>
+        <div class="content-box">
+            <p>Une structure de 13 mètres de haut avec des colonnes corinthiennes élégantes.</p>
+            <span class="sub-text">O structură de 13 metri înălțime cu coloane corintice elegante.</span>
+            <p>L'étage supérieur abrite l'horloge emblématique de la ville.</p>
+            <span class="sub-text">Nivelul superior adăpostește ceasul emblematic al orașului.</span>
+        </div>
+    </div>
+
+    <div class="slide">
+        <h1>Le Monument Aujourd'hui</h1>
+        <div class="traducere">Monumentul Astăzi</div>
+        <img src="poza1.jpg" alt="Arcul de Triumf Chișinău" class="arc-photo">
+        <p style="margin-top: 20px;">Un symbole de fierté nationale.</p>
+        <span class="sub-text">Un simbol al mândriei naționale.</span>
+    </div>
+
+    <div class="slide">
+        <h1>MERCI BEAUCOUP !</h1>
+        <div class="traducere">Vă mulțumesc mult!</div>
+        <p>Présentation sur le patrimoine de la République de Moldova.</p>
+        <span class="sub-text">Prezentare despre patrimoniul Republicii Moldova.</span>
+    </div>
+
+    <div class="controls">
+        <button onclick="changeSlide(-1)">Précédent</button>
+        <button onclick="changeSlide(1)">Suivant</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function changeSlide(direction) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + direction + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "ArrowRight") changeSlide(1);
+            if (e.key === "ArrowLeft") changeSlide(-1);
+        });
+    </script>
+
+</body>
+</html>
+
